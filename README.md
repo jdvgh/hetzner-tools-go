@@ -3,6 +3,7 @@
 ![version](https://img.shields.io/github/v/release/jdvgh/hetzner-tools-go?include_prereleases)
 [![Apache License v2](https://img.shields.io/github/license/jdvgh/hetzner-tools-go)](http://www.apache.org/licenses/)
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/jdvgh/hetzner-tools-go)](https://github.com/jdvgh/hetzner-tools-go)
+
 This is just a personal project for helper functions to talk to the Hetzner-API [Hetzner](https://www.hetzner.com/).
 
 # Motivation
@@ -21,6 +22,7 @@ It mainly uses
 - Hetzner DNS API [Hetzner DNS API](https://dns.hetzner.com/api-docs)
 - Hetzner HCloud Go API [Hetzner HCLoud Go](https://github.com/hetznercloud/hcloud-go)
 - Cobra-CLI to generate the CLI [Cobra-CLI](https://github.com/spf13/cobra-cli/blob/main/README.md)
+- My personal bootstrapping project (which uses terraform-hcloud-kube-hetzner - as mentioned above in the underlyings) [hetzner-k3s-bootstrap](https://github.com/jdvgh/hetzner-k3s-bootstrap)
 
 # How to run
 
