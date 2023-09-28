@@ -36,9 +36,18 @@ func retrieveUpdateRecords(zoneID, dnsToken, hcloudToken string) {
 	if dnsRecords.Records == nil {
 		log.Fatalf("No DNS Records available in zone %v to update \n", zoneID)
 	}
-	sendBulkUpdateRecords(zoneID, dnsToken, newIP, dnsRecords)
+	exchangeIpInRecords(newIP, &dnsRecords)
+	sendBulkUpdateRecords(dnsToken, dnsRecords)
 }
-func sendBulkUpdateRecords(zoneID, dnsToken, newIP string, dnsRecords dns.DNSRecords) {
+
+func exchangeIpInRecords(newIp string, dnsRecords *dns.DNSRecords) {
+
+	for index := range dnsRecords.Records {
+		dnsRecords.Records[index].Value = newIp
+	}
+
+}
+func sendBulkUpdateRecords(dnsToken string, dnsRecords dns.DNSRecords) {
 
 	// Bulk Update Records (PUT https://dns.hetzner.com/api/v1/records/bulk)
 	//
