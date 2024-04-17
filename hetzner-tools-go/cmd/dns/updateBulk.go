@@ -28,9 +28,13 @@ var updateBulkCmd = &cobra.Command{
 func init() {
 }
 func retrieveUpdateRecords(zoneID, dnsToken, hcloudToken string) {
-	newIP := hcloudHelpers.GetFirstServerIP(hcloudToken)
+	newIP := hcloudHelpers.GetFirstLoadBalancerIP(hcloudToken)
 	if newIP == "" {
-		log.Fatalln("Could not retrieve IP from Server")
+		log.Println("Could not retrieve IP from LoadBalancer - trying server next")
+		newIP = hcloudHelpers.GetFirstServerIP(hcloudToken)
+		if newIP == "" {
+			log.Fatalln("Could not retrieve IP from Server")
+		}
 	}
 	dnsRecords := dns.GetDnsRecordsByType(dnsToken, zoneID, dns.A)
 	if dnsRecords.Records == nil {

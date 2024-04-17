@@ -4,6 +4,7 @@ import (
 	"os"
 
 	cmdDns "github.com/jdvgh/hetzner-tools-go/hetzner-tools-go/cmd/dns"
+	cmdLoadBalancer "github.com/jdvgh/hetzner-tools-go/hetzner-tools-go/cmd/loadBalancer"
 	cmdServer "github.com/jdvgh/hetzner-tools-go/hetzner-tools-go/cmd/server"
 	"github.com/spf13/cobra"
 )
@@ -27,6 +28,7 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(cmdServer.NewServerCommand())
+	rootCmd.AddCommand(cmdLoadBalancer.NewLoadBalancerCommand())
 	rootCmd.AddCommand(cmdDns.NewDnsCommand())
 
 }
